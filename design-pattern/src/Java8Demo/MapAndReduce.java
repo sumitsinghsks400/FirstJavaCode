@@ -13,7 +13,7 @@ public class MapAndReduce {
        List<Integer>  number=Arrays.asList(3,5,4,7,8,4,6,4,5,9);
         int sum = number.stream().mapToInt(i -> i).sum();
         System.out.println(sum);
-
+        number.stream().mapToInt(Integer::intValue).forEach(System.out::println);
         number.stream().reduce(Integer::sum).stream().forEach(System.out::println);
         number.stream().reduce(Integer::max).stream().forEach(System.out::println);
 

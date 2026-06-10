@@ -12,6 +12,7 @@ public class MapDemo {
         map.put("France","paris");
         map.put(null,null);
         map.put(null,null);
+        map.put("hhh",null);
 
         System.out.println(map);
         System.out.println(map.get("india"));

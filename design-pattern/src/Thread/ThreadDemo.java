@@ -2,7 +2,7 @@ package Thread;
 
 public class ThreadDemo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Thread th = new Thread();
         th.start();
          Thread thread = new Thread(()-> System.out.println("hello from java Thread"));
@@ -21,6 +21,7 @@ public class ThreadDemo {
 
           Thread meth= new Thread(Hello::sayHello);
           meth.start();
+         // meth.join();
 
         System.out.println("Hello from main thread");
     }

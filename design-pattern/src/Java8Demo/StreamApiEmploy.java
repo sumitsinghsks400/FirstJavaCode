@@ -46,7 +46,7 @@ Map<String,Integer> map= new HashMap<>();
 
         System.out.println("-----------------");
 
-       // map.entrySet().stream().sorted(Map.Entry.comparingByKey(Comparator.reverseOrder())).forEach(System.out::println);
+        map.entrySet().stream().sorted(Map.Entry.comparingByKey(Comparator.reverseOrder())).skip(1).forEach(System.out::println);
        // Map<Employee,Integer> employeeIntegerMap= new TreeMap<>(Comparator.comparing(Employee::getId));
       //  Map<Employee,Integer> employeeIntegerMap= new TreeMap<>(Comparator.comparing(Employee::getSalarly));
 

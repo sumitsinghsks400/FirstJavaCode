@@ -1,7 +1,47 @@
 package Thread;
 
-public class FindEvenOddUsingTwoThread {
-    public static void main(String[] args) {
+public class FindEvenOddUsingTwoThread implements  Runnable {
+    Object object;
+    static int count=1;
+    public FindEvenOddUsingTwoThread(Object object) {
+        this.object=object;
+    }
 
+    public static void main(String[] args) {
+//orcal
+
+        Object lock= new Object();
+        Runnable r1=  new FindEvenOddUsingTwoThread(lock);
+        Runnable r2=  new FindEvenOddUsingTwoThread(lock);
+       new Thread(r1,"even").start();
+       new Thread(r2,"odd").start();
+
+
+    }
+
+    @Override
+    public void run() {
+        while (count<=10) {
+            if(count%2==0 && Thread.currentThread().getName().equals("even")) {
+               synchronized (object) {
+                   System.out.println("thread Name:" + Thread.currentThread().getName()+ "value : "+ count);
+                   count++;
+                   try {
+                       object.wait();
+                   } catch (InterruptedException e) {
+                       e.printStackTrace();
+                   }
+               }
+            }
+            if(count%2!=0 && Thread.currentThread().getName().equals("odd")) {
+                synchronized (object) {
+                    System.out.println("thread Name:" + Thread.currentThread().getName()+ "value : "+ count);
+                    count++;
+
+                        object.notify();
+
+                }
+            }
+        }
     }
 }
